@@ -1,31 +1,54 @@
-<p>
-  list works!
-</p>
+<div class="widgets">
+  <div class="row">
+      <div class="col-12">
+          <ba-card title="Buscar territorios" baCardClass="with-scroll">
+              <form (ngSubmit)="search()" #searchForm="ngForm">
+              <div class="col-lg-6">
+                  
 
-<div class="horizontal-scroll">
-  <table class="table table-condensed">
-    <thead>
-    <tr>
-      <th class="table-id">#</th>
-      <th>First Name</th>
-      <th>Last Name</th>
-      <th>Username</th>
-      <th>Email</th>
-      <th>Status</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr *ngFor="let item of peopleTableData">
-      <td class="table-id">{{ item.id }}</td>
-      <td>{{ item.firstName }}</td>
-      <td>{{ item.lastName }}</td>
-      <td>{{ item.username }}</td>
-      <td><a class="email-link" href="mailto:{{ item.email }}">{{ item.email }}</a></td>
-      <td>
-        <button ngClass="{status-button btn btn-xs btn-{{ item.status }}">{{ item.status }}</button>
-      </td>
-    </tr>
-    </tbody>
-  </table>
+                  <div class="form-group">
+                      <label for="inputName">Nombre</label>
+                      <input type="text" class="form-control" id="inputName" placeholder="Nombre" [(ngModel)]="filter.name" name="name" autocomplete="off">
+                  </div>
+
+                  <div class="form-group">
+                      <label for="inputNumber">Número</label>
+                      <input type="text" class="form-control" id="inputNumber" placeholder="Número" [(ngModel)]="filter.number" name="number" autocomplete="off">
+                  </div>
+              </div>
+
+              <ul class="btn-list clearfix">
+                  <li>
+                      <button type="submit" class="btn btn-success btn-raised" [disabled]="!searchForm.form.valid"><i class="ion-search"></i> Buscar</button>                
+                  </li>
+                  <li>                
+                      <button type="button" class="btn btn-danger btn-raised" (click)="clearForm()" [disabled]="!searchForm.form.dirty"><i class="fa fa-remove"></i> Limpiar</button>
+                  </li>
+              </ul>
+              </form>
+          </ba-card>        
+      </div>
+  </div>
+  <div class="row table-responsive">
+      <table class="table table-striped">
+          <thead>
+              <tr>
+                <th class="table-id">#</th>
+                <th>Name</th>
+                <th>Number</th>
+                <th></th>
+              </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of list">
+              <td class="table-id">{{ item.id }}</td>
+              <td>{{ item.name }}</td>
+              <td>{{ item.number }}</td>           
+                  <td><button type="button" class="btn btn-xs btn-primary btn-icon" (click)="viewPerson($event,item.personId)"><i class="ion-chevron-right"></i></button></td>          
+              </tr>
+          </tbody>
+      </table>
+  </div>
 </div>
+
 

@@ -20,6 +20,7 @@
     "menu": {
       "dashboard": "Dashboard",
       "territories":"Territorios",
+      "territories_territories":"Listado",
       "editors": "Editors",
       "ck_editor": "CKEditor",
       "components": "Components",
