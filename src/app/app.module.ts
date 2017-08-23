@@ -10,6 +10,11 @@ import { TranslateService } from '@ngx-translate/core';
  */
 import { routing } from './app.routing';
 
+
+// Imports for loading & configuring the in-memory web api
+import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { InMemoryDataService }  from './in-memory-data.service';
+
 // App is our top level component
 import { App } from './app.component';
 import { AppState, InternalStateType } from './app.service';
@@ -41,6 +46,7 @@ export type StoreType = {
   imports: [ // import Angular's modules
     BrowserModule,
     HttpModule,
+    InMemoryWebApiModule.forRoot(InMemoryDataService, { passThruUnknownUrl: true }),
     RouterModule,
     FormsModule,
     ReactiveFormsModule,
