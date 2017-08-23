@@ -12,7 +12,19 @@ export const PAGES_MENU = [
             expanded: false,
             order: 0
           }
-        }
+        },
+      },
+      {
+        path: 'territories',
+        data: {
+          menu: {
+            title: 'general.menu.territories',
+            icon: 'ion-android-home',
+            selected: false,
+            expanded: false,
+            order: 0
+          }
+        },
       },
       {
         path: 'editors',

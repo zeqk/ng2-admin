@@ -19,6 +19,7 @@
     },
     "menu": {
       "dashboard": "Dashboard",
+      "territories":"Territorios",
       "editors": "Editors",
       "ck_editor": "CKEditor",
       "components": "Components",
