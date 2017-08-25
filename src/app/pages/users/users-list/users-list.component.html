@@ -1,63 +1,66 @@
 <div class="widgets">
-  <div class="row">
-      <div class="col-12">
-          <ba-card title="Buscar territorios" baCardClass="with-scroll">
-              <form (ngSubmit)="search()" #searchForm="ngForm">
-              <div class="col-lg-6">
-                  
+    <div class="row">
+        <div class="col-12">
+            <ba-card title="Buscar territorios" baCardClass="with-scroll">
+                <form (ngSubmit)="search()" #searchForm="ngForm">
+                    <div class="row">
+                        <div class="col-6">
 
-                  <div class="form-group">
-                      <label for="inputName">Nombre</label>
-                      <input type="text" class="form-control" id="inputName" placeholder="Nombre" [(ngModel)]="filter.firstname" name="firstname" autocomplete="off">
-                  </div>
 
-                  <div class="form-group">
-                      <label for="inputNumber">Apellido</label>
-                      <input type="text" class="form-control" id="inputLastname" placeholder="Apellido" [(ngModel)]="filter.lastname" name="lastname" autocomplete="off">
-                  </div>
-              </div>
+                            <div class="form-group">
+                                <label for="inputName" translate>{{'users.firstname'}}</label>
+                                <input type="text" class="form-control" id="inputName" [placeholder]="'users.firstname' | translate" [(ngModel)]="filter.firstname" name="firstname"
+                                    autocomplete="off">
+                            </div>
 
-              <div class="col-lg-6">
-                <div class="form-group">
-                    <label for="inputName">Usuario</label>
-                    <input type="text" class="form-control" id="inputUsername" placeholder="Usuario" [(ngModel)]="filter.username" name="username" autocomplete="off">
-                </div>
-            </div>
+                            <div class="form-group">
+                                <label for="inputNumber" translate>{{'users.lastname'}}</label>
+                                <input type="text" class="form-control" id="inputLastname" [placeholder]="'users.lastname' | translate" [(ngModel)]="filter.lastname" name="lastname"
+                                    autocomplete="off">
+                            </div>
+                        </div>
 
-              <ul class="btn-list clearfix">
-                  <li>
-                      <button type="submit" class="btn btn-success btn-raised" [disabled]="!searchForm.form.valid"><i class="ion-search"></i> Buscar</button>                
-                  </li>
-                  <li>                
-                      <button type="button" class="btn btn-danger btn-raised" (click)="clearForm()" [disabled]="!searchForm.form.dirty"><i class="fa fa-remove"></i> Limpiar</button>
-                  </li>
-              </ul>
-              </form>
-          </ba-card>        
-      </div>
-  </div>
-  <div class="row table-responsive">
-      <table class="table table-striped">
-          <thead>
-              <tr>
-                <th class="table-id">#</th>
-                <th>Apellido</th>
-                <th>Nombre</th>
-                <th>Usuario</th>
-                <th></th>
-              </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let item of list">
-              <td class="table-id">{{ item.id }}</td>
-              <td>{{ item.lastname }}</td>
-              <td>{{ item.firstname }}</td>           
-              <td>{{ item.username }}</td>           
-              <td><button type="button" class="btn btn-xs btn-primary btn-icon" (click)="view($event,item.id)"><i class="ion-chevron-right"></i></button></td>          
-              </tr>
-          </tbody>
-      </table>
-  </div>
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label for="inputName" translate>{{'users.username'}}</label>
+                                <input type="text" class="form-control" id="inputUsername" [placeholder]="'users.username' | translate" [(ngModel)]="filter.username" name="username"
+                                    autocomplete="off">
+                            </div>
+                        </div>
+                    </div>
+
+                    <ul class="btn-list clearfix">
+                        <li>
+                            <button type="submit" class="btn btn-success btn-raised" [disabled]="!searchForm.form.valid"><i class="ion-search"></i> Buscar</button>
+                        </li>
+                        <li>
+                            <button type="button" class="btn btn-danger btn-raised" (click)="clearForm()" [disabled]="!searchForm.form.dirty"><i class="fa fa-remove"></i> Limpiar</button>
+                        </li>
+                    </ul>
+                </form>
+            </ba-card>
+        </div>
+    </div>
+    <div class="row table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th class="table-id">#</th>
+                    <th translate>{{'users.lastname'}}</th>
+                    <th translate>{{'users.firstname'}}</th>
+                    <th translate>{{'users.username'}}</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of list">
+                    <td class="table-id">{{ item.id }}</td>
+                    <td>{{ item.lastname }}</td>
+                    <td>{{ item.firstname }}</td>
+                    <td>{{ item.username }}</td>
+                    <td><button type="button" class="btn btn-xs btn-primary btn-icon" (click)="view($event,item.id)"><i class="ion-chevron-right"></i></button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </div>
-
-

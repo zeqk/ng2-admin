@@ -1,0 +1,52 @@
+<div class="widgets">
+
+  <form *ngIf="initialData" novalidate [formGroup]="form" (ngSubmit)="onSubmit(form.value)">
+
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label for="inputUsername">Username</label>
+          <input type="text" class="form-control" id="inputUsername" name="username" placeholder="Username" formControlName="username"
+            [ngModel]="initialData.user.username" autocomplete="off">
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label for="inputFirstName">Nombre</label>
+          <input type="text" class="form-control" id="inputFirstName" name="firstName" placeholder="Nombre" formControlName="firstName"
+            [ngModel]="initialData.user.firstname" autocomplete="off">
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label for="inputLastName">Apellido</label>
+          <input type="text" class="form-control" id="inputLastName" name="lastName" placeholder="Apellido" formControlName="lastName"
+            [ngModel]="initialData.user.lastname" autocomplete="off">
+        </div>
+      </div>
+    </div>
+
+    <!-- <div class="row">
+      <div class="col-sm-6">
+        <div class="form-group" [ngClass]="{'has-error': (!startingPageId.valid && startingPageId.touched), 'has-success': (startingPageId.valid && startingPageId.touched)}">
+          <label for="startingPage">Página de inicio</label>
+          <select class="form-control" id="startingPage" name="startingPage" formControlName="startingPageId" [ngModel]="initialProfile.startingPageId">
+                        <option *ngFor="let p of startingPages" [value]="p.value">{{p.text}}</option>
+                    </select>
+        </div>
+      </div>
+    </div> -->
+
+    <div class="button-wrapper">
+      <button type="submit" class="btn btn-primary btn-raised" [disabled]="form.pristine || !form.valid">Guardar</button>
+    </div>
+
+
+  </form>
+</div>

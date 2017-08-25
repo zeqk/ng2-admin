@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { UsersService } from '../users.service';
 import { User } from '../../../common/model';
@@ -13,7 +14,7 @@ export class UsersListComponent implements OnInit {
   list : User[];
   filter: any = {};
 
-  constructor(private usersService : UsersService) { }
+  constructor(private router: Router, private usersService: UsersService) { }
 
   ngOnInit() {
 
@@ -43,6 +44,10 @@ export class UsersListComponent implements OnInit {
   clearForm() {
     this.filter = {};
     this.all();
+  }
+
+  view($event: any, id: number) {
+    this.router.navigate(['pages', 'users', id]);
   }
 
 }
