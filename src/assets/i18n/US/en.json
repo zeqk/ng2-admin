@@ -19,8 +19,10 @@
     },
     "menu": {
       "dashboard": "Dashboard",
-      "territories":"Territorios",
-      "territories_territories":"Listado",
+      "territories":"Territories",
+      "territories_territories":"List",
+      "users":"Users",
+      "users_list":"List",
       "editors": "Editors",
       "ck_editor": "CKEditor",
       "components": "Components",

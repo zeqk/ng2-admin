@@ -5,4 +5,5 @@
 
 export const environment = {
   production: false,
+  apiUrl: 'http://territories.bieinte.com/api/'
 };

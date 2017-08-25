@@ -5,6 +5,8 @@ import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { TranslateService } from '@ngx-translate/core';
+import { Http, RequestOptions } from '@angular/http';
+import { AuthHttp, AuthConfig } from 'angular2-jwt';
 /*
  * Platform and Environment providers/directives/pipes
  */
@@ -23,10 +25,19 @@ import { NgaModule } from './theme/nga.module';
 import { PagesModule } from './pages/pages.module';
 
 
+export function authHttpServiceFactory(http: Http, options: RequestOptions) {
+  return new AuthHttp(new AuthConfig(), http, options);
+}
+
 // Application wide providers
 const APP_PROVIDERS = [
   AppState,
-  GlobalState
+  GlobalState,
+  {
+    provide: AuthHttp,
+    useFactory: authHttpServiceFactory,
+    deps: [Http, RequestOptions]
+  }
 ];
 
 export type StoreType = {
@@ -34,6 +45,8 @@ export type StoreType = {
   restoreInputValues: () => void,
   disposeOldHosts: () => void
 };
+
+
 
 /**
  * `AppModule` is the main entry point into Angular2's bootstraping process
